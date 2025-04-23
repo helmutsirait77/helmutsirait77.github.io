@@ -45,10 +45,25 @@ header {
 	 color: var(--text-color);
 	 font-weight: 500;
 	 cursor: default;
-	 text-transform: uppercase;
+	 text-transform: capitalize;
 }
 
-navbar a {
+nav a {
 	 font-size: 1.7rem;
 	 color: var(--text-color);
+	 margin-left: 4rem;
+	 text-transform: capitalize;
+	 transition: color .3s;
+}
+
+nav a:hover,
+.logo.active  {
+	 color: var(--main-color);
+}
+
+#menu {
+	 fill: var(--text-color);
+	 width: 35px;
+	 height: 35px;
+	 display: none;
 }
