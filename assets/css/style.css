@@ -7,6 +7,7 @@
 	 outline: none;
 	 scroll-behavior: smooth;
 	 font-family: 'Roboto', arial, sans-serif;
+	 font-weight: 300;
 }
 
 :root {
@@ -43,9 +44,9 @@ header {
 .logo {
 	 font-size: 2.5rem;
 	 color: var(--text-color);
-	 font-weight: 500;
-	 cursor: default;
+/* 	 cursor: default; */
 	 text-transform: capitalize;
+     font-family: 'Alex Brush';
 }
 
 nav a {
@@ -177,6 +178,7 @@ span {
 .heading {
 	 font-size: 4.5rem;
 	 text-align: center;
+	 font-weight: 500;
 }
 
 .about h2 {
@@ -184,6 +186,23 @@ span {
 }
 
 .about h3 {
-	 font-size: 2.6rem;
+	 font-size: 2.1rem;
+	 text-transform: capitalize;
+}
 
+.tech-stack {
+    display: flex;
+    width: 40%;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.tech-stack .icon {
+	 display: flex;
+	 justify-content: space-between;
+	 width: 40%;
+}
+
+.tech-stack svg {
+	 fill: var(--main-color);
 }
