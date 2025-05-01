@@ -206,3 +206,42 @@ span {
 .tech-stack svg {
 	 fill: var(--main-color);
 }
+
+/* projects */
+.projects h2 {
+	 margin-bottom: 2rem;
+}
+
+.projects-content {
+	 display: flex;
+	 justify-content: center;
+	 align-items: center;
+	 flex-wrap: wrap;
+	 gap: 2rem;
+}
+
+.projects-content .project-card {
+	 flex: 1 1 30rem;
+	 background: var(--second-bg-color);
+	 padding: 3rem 2rem 4rem;
+	 border-radius: 2rem;
+	 text-align: center;
+	 border: .2rem solid var(--bg-color);
+}
+
+.project-card img {
+	 width: 20vw;
+}
+
+.project-card h3 {
+	 font-size: 2.6rem;
+}
+
+.project-card p {
+	 font-size: 1.6rem;
+	 margin: 1rem 0 3rem;
+}
+
+.btn-card a{
+    
+}
