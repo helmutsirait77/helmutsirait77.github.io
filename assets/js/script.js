@@ -1,11 +1,10 @@
 // hamburger menu 
-let hamMenu = document.querySelector('#menu');
+let hamMenu = document.getElementById('menu');
 let nav = document.querySelector('nav');
 
 hamMenu.addEventListener('click', function() {
-      hamMenu.classList.add('x-menu');
-      
-
+      hamMenu.classList.toggle('active');
+      nav.classList.toggle('active');
 }); 
 
 // scroll sections active links 
@@ -29,4 +28,8 @@ window.onscroll = function() {
      // sticky navbar 
      let header = document.querySelector('header');
      header.classList.toggle('sticky', window.scrollY > 100);
+
+     // remove toggle icon and navbar when click navbar link (scroll)
+      hamMenu.classList.remove('active');
+      nav.classList.remove('active');
 }
