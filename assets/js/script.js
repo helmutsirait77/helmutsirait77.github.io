@@ -32,4 +32,45 @@ window.onscroll = function() {
      // remove toggle icon and navbar when click navbar link (scroll)
       hamMenu.classList.remove('active');
       nav.classList.remove('active');
+}   
+  
+// typed js 
+const typed = document.querySelector('.multiple-text');
+const toType = ['Frontend Developer', 'Web Design', 'Blogger'];
+
+const delayTypingChar = 100;
+const delayErasingText = 100;
+const delayTypingText = 1000;
+
+let totypeIndex = 0;
+let charIndex = 0;
+
+function typeText() {
+   if (charIndex < toType[totypeIndex].length) {
+      typed.textContent += toType[totypeIndex].charAt(charIndex);
+      charIndex++;
+      setTimeout(typeText, delayTypingChar);
+   }
+   else {
+      setTimeout(eraseText, delayTypingText);
+   }
 }
+
+function eraseText() {
+   if (charIndex > 0) {
+      typed.textContent = toType[totypeIndex].substring(0, charIndex-1);
+      charIndex = charIndex-1;
+      setTimeout(eraseText, delayErasingText);
+   }
+   else {
+      totypeIndex++;
+
+      if (totypeIndex >= toType.length)
+         totypeIndex = 0;
+         setTimeout(typeText, delayTypingText);
+   }
+}
+
+window.onload = function() {
+   if (toType[totypeIndex].length) setTimeout(typeText, delayTypingText);
+}   
