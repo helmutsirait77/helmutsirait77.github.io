@@ -11,8 +11,8 @@
 }
 
 :root {
-	 --bg-color : #273343;
-	 --second-bg-color: #323946;
+	 --bg-color : #232630;
+	 --second-bg-color: #2d3859;
 	 --text-color: #e8e8e8;
 	 --main-color: #5afaf2;
 }
@@ -71,14 +71,10 @@ nav a:hover
 }
 
 #menu {
-/* 	 fill: var(--text-color); */
 	 width: 37px;
 	 height: 37px;
 	 display: none;
 	 cursor: pointer;
-/*      color: transparent; */
-   /*   transition: transform 400ms;
-     user-select: none; */
 }
 
 .line {
@@ -112,15 +108,6 @@ nav a:hover
     stroke-dashoffset: -86px;
 }
 
-/* .x-menu {
-	 fill: var(--text-color);
-	 width: 35px;
-	 height: 35px;
-	 display: none;
-}  */
-
-
-
 
 section {
    min-height: 100vh;
@@ -136,7 +123,7 @@ section {
 
 .hero-content h3 {
 	 font-size: 3.2rem;
-	 font-weight: 900;
+	 font-weight: 500;
 }
 
 .hero-content h3:nth-of-type(2) {
@@ -145,6 +132,7 @@ section {
 
 span {
 	 color: var(--main-color);
+	 font-weight: 500;
 }
 
 .hero-content h1 {
@@ -324,7 +312,7 @@ span {
 }
 
 .project-card img {
-	 width: 20vw;
+	 width: 100%;
 }
 
 .project-card h3 {
@@ -426,7 +414,7 @@ span {
 .contact form .input-box {
 	 display: flex;
 	 justify-content: space-between;
-	 flex-wrap: wrap;
+     gap: 10px;
 }
 
 .contact form .input-box input,
@@ -441,7 +429,7 @@ span {
 }
 
 .contact form .input-box input {
-	 width: 49%;
+
 }
 
 .contact form textarea {
@@ -451,6 +439,25 @@ span {
 .contact form .btn {
 	 margin-top: 2rem;
 	 cursor: pointer;
+}
+
+.form-wrapper  {
+	 width: 50%;
+	 display: flex;
+	 flex-direction: column;
+	 align-items: flex-start;
+/* 	 border: 1px solid white; */
+}
+
+.form-message {
+	  width: 100%;
+	  text-align: left;
+	 font-size: 1.5rem;
+
+}
+
+.form-wrapper label {
+	 font-size: 1.5rem;
 }
 
 /* footer */
@@ -469,12 +476,14 @@ footer {
 }
 
 /* BREAKPOINTS */
+/* Dekstop / PC */
 @media ( width <= 1200px ) {
 	 html {
 	 	 font-size: 55%;
 	 }
 }
 
+/* Tablet */
 @media ( width <= 991px ) {
 	 header {
 	 	 padding: 2rem 3%;
@@ -499,13 +508,16 @@ footer {
 	 .footer {
 	 	 padding: 2rem 3%;
 	 }
-}
 
+	   .btn-card {
+         justify-content: center;
+         gap: 1rem;
+  }
+}
+/* Mobile */
 @media ( width <= 768px ) {
 	 #menu {
 	 	 display: block;
-	 	  /* position: relative;
-        z-index: 3; */
 	 }
 
 	 nav {
@@ -563,6 +575,21 @@ footer {
      .blog-content {
      	  grid-template-columns: repeat(2, 1fr);
      }
+
+  .btn-card {
+   justify-content: center;
+   gap: 1rem;
+  }
+
+  .contact form .input-box {
+  	  flex-direction: column;
+  }
+  
+   .form-wrapper {
+   	 width: 100%;
+   }
+
+
 }
 
 @media ( width <= 617px ) {

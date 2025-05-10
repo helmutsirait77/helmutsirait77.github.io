@@ -32,6 +32,8 @@ window.onscroll = function() {
      // remove toggle icon and navbar when click navbar link (scroll)
       hamMenu.classList.remove('active');
       nav.classList.remove('active');
+
+      
 }   
   
 // typed js 
