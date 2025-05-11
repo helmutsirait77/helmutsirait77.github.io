@@ -171,16 +171,16 @@
                    <div class="input-box">
                       <div class="form-wrapper">
                             <label for="name" class="form-label">Name</label>
-                            <input type="text" placeholder="Name" id="name">
+                            <input type="text" placeholder="Name" id="name" autocomplete="off" pattern="[a-zA-Z0-9]+" minlength="4" maxlength="10" required>
                       </div>
                        <div class="form-wrapper">
                              <label for="email" class="form-label">Email</label>
-                             <input type="email" placeholder="Email" id="email">
+                             <input type="email" placeholder="Email" id="email" autocomplete="off" pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$" required>
                        </div>
                    </div>
                    <div class="form-message">
                    <label for="message" class="form-label">Message</label>
-                   <textarea name="" id="message" cols="30" rows="10" placeholder="Write your message"></textarea>
+                   <textarea name="" id="message" cols="30" rows="10" placeholder="Write your message" autocomplete="off" required></textarea>
                   </div>
                    <button type="submit" class="btn">Send Message</button>
              </form>
