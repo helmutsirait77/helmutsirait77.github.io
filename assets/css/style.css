@@ -13,7 +13,7 @@
 :root {
 	 --bg-color :  #111723;
 	 --second-bg-color: #182031;
-	 --text-color: #e8e8e8;
+	 --text-color: #fcf7f8;
 	 --main-color: #5afaf2;
 }
 
@@ -33,7 +33,7 @@ header {
 	 top: 0;
 	 left: 0;
 	 width: 100%;
-	 padding: 2rem 9%;
+	 padding: 1rem 9%;
 	 background-color: transparent;
 	 display: flex;
 	 justify-content: space-between;
@@ -202,19 +202,82 @@ span {
 /* button */
 .btn {
 	 display: inline-block;
-	 padding: 1rem 2.1rem;
-	 background: var(--main-color);
-	 border-radius: 4rem;
-	 box-shadow: 0 0 1rem var(--main-color);
+	 
+/*	 background: var(--main-color);*/
+/*	 border-radius: 4rem;*/
+/*	 box-shadow: 0 0 1rem var(--main-color);*/
 	 font-size: 1.6rem;
-	 color: var(--second-bg-color);
 	 letter-spacing: .1rem;
 	 font-weight: 500;
-	 transition: .5s box-shadow ease;
+/*	 transition: .5s box-shadow ease;*/
+	 position: relative;
+	  background: rgba(100,150,170,0.2);
 }
 
-.btn:hover {
+/*.btn:hover {
 	 box-shadow: none;
+}*/
+
+.btn span {
+	   display: block;
+	   color: var(--text-color);
+	   padding: 1rem 2.1rem;
+
+}
+
+.btn::before, .btn::after{
+  content:"";
+  width: 0;
+  height: 2px;
+  position: absolute;
+  transition: all 0.2s linear;
+  background: var(--main-color);
+ 
+}
+
+.btn span::before, .btn span::after{
+  content:"";
+  width: 2px;
+  height: 0;
+  position: absolute;
+  transition: all 0.2s linear;
+  background: var(--main-color);
+ 
+}
+.btn:hover::before, .btn:hover::after{
+  width: 100%;
+}
+.btn:hover span::before, .btn:hover span::after{
+  height: 100%;
+}
+
+.btn::before, .btn::after{
+  transition-delay: 0.2s;
+}
+.btn span::before, .btn span::after{
+  transition-delay: 0s;
+}
+.btn::before{
+  right: 0;
+  top: 0;
+}
+.btn::after{
+  left: 0;
+  bottom: 0;
+}
+.btn span::before{
+  left: 0;
+  top: 0;
+}
+.btn span::after{
+  right: 0;
+  bottom: 0;
+}
+.btn:hover::before, .btn:hover::after{
+  transition-delay: 0s;
+}
+.btn:hover span::before, .btn:hover span::after{
+  transition-delay: 0.2s;
 }
 
 .cursor{
@@ -303,7 +366,7 @@ span {
 	 display: flex;
 	 justify-content: center;
 	 align-items: center;
-	 flex-wrap: wrap;
+/*	 flex-wrap: wrap;*/
 	 gap: 2rem;
 }
 
@@ -336,7 +399,7 @@ span {
 
 .btn-card {
    display: flex;
-   justify-content: space-between;
+   justify-content: center;
    gap: 4px;
 }
 
@@ -417,17 +480,16 @@ span {
 .contact form {
 	 max-width: 70rem;
 	 margin: 1rem auto;
-	 text-align: center;
-	 margin-bottom: 3rem;
+     display: grid;
+     grid-template-columns: repeat(4, 1fr);
+     grid-template-areas: 'label-name label-name label-email label-email'
+                          'name name email email'
+                          'label-message label-message label-message label-message'
+                          'message message message message';	
+     gap: 10px;                      
 }
 
-.contact form .input-box {
-	 display: flex;
-	 justify-content: space-between;
-     gap: 10px;
-}
-
-.contact form .input-box input,
+.contact form input,
 .contact form textarea {
 	 width: 100%;
 	 padding: 1.5rem;
@@ -438,37 +500,39 @@ span {
 	 margin: .7rem 0;
 }
 
-.contact form .input-box input {
-
-}
-
 .contact form textarea {
 	 resize: none;
 }
 
 .contact form .btn {
-	 margin-top: 2rem;
+	 margin-top: 10px;
 	 cursor: pointer;
 }
 
-.form-wrapper  {
-	 width: 50%;
-	 display: flex;
-	 flex-direction: column;
-	 align-items: flex-start;
-/* 	 border: 1px solid white; */
+.name {
+	 grid-area: name;
 }
 
-.form-message {
-	  width: 100%;
-	  text-align: left;
-	 font-size: 1.5rem;
-
+.email {
+	 grid-area: email;
 }
 
-.form-wrapper label {
-	 font-size: 1.5rem;
+.message {
+	 grid-area: message;
 }
+
+.label-name {
+	 grid-area: label-name;
+}
+
+.label-email {
+	 grid-area: label-email;
+}
+
+.label-message {
+	 grid-area: label-message;
+}
+
 
 /* footer */
 footer {
@@ -523,6 +587,12 @@ footer {
          justify-content: center;
          gap: 1rem;
   }
+
+  .projects-content {
+	
+	 flex-wrap: wrap;
+	
+   }
 }
 /* Mobile */
 @media ( width <= 768px ) {
@@ -539,10 +609,15 @@ footer {
 	 	 background: var(--bg-color);
 	 	 border-top: .1rem solid rgba(0, 0, 0, .2);
 	 	 box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .2);
+	 	 transition: .5s ease;
 	 	 display: none;
 	 }
      nav.active {
          display: block;
+     }
+
+     header.active {
+     	  background: var(--bg-color);
      }
 	 nav a {
 	 	 display: block;
@@ -587,18 +662,25 @@ footer {
      }
 
   .btn-card {
-   justify-content: center;
-   gap: 1rem;
+     justify-content: center;
+      gap: 1rem;
   }
 
-  .contact form .input-box {
-  	  flex-direction: column;
-  }
+/* contact */
+.contact form {
+     grid-template-columns: repeat(1, 1fr);
+     grid-template-areas: 'label-name '
+                          'name'
+                          'label-email'
+                          'email'
+                          'label-message '
+                          'message';
+                                              
+}
   
-   .form-wrapper {
-   	 width: 100%;
-   }
-
+.btn {
+	  width: 30%;
+} 
 
 }
 
@@ -616,6 +698,10 @@ footer {
 	 .contact form .input-box input {
 	 	 width: 100%;
 	 }
+
+	 .btn {
+          text-align: center;
+	 }
 }
 
 @media ( width <= 365px ) {
@@ -626,4 +712,5 @@ footer {
 	 .footer p {
 	 	 text-align: center;
 	 }
+
 }
