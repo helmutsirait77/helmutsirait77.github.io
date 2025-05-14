@@ -80,3 +80,34 @@ function eraseText() {
 window.onload = function() {
    if (toType[totypeIndex].length) setTimeout(typeText, delayTypingText);
 }   
+
+// smooth scroll 
+navLinks.forEach(function (i) {
+       i.addEventListener("click", (event) => {
+              event.preventDefault();
+              const targetId = event.currentTarget.getAttribute("href");
+              const duration = 1000;
+              let targetPosition = document.querySelector(targetId).offsetTop;
+              let startPosition = window.pageYOffset;
+              let distance = targetPosition - startPosition;
+              let start = null;
+
+              const step = function(timeStamp) {
+                  if( !start ) start = timeStamp;
+                  const progress = timeStamp - start;
+
+                  window.scrollTo(0, isInOutQuadCubic(progress, startPosition, distance, duration));
+                  if( progress < duration ) window.requestAnimationFrame(step);
+
+                  function isInOutQuadCubic(t, b, c, d) {
+          t /= d / 2;
+          if (t < 1) return (c / 2) * t * t * t + b;
+          t -= 2;
+          return (c / 2) * (t * t * t + 2) + b;
+        }
+              }
+
+              window.requestAnimationFrame(step)
+
+       })
+})
