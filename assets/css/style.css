@@ -11,7 +11,7 @@
 }
 
 :root {
-	 --bg-color :  #111723;
+	 --bg-color : #111723;
 	 --second-bg-color: #182031;
 	 --text-color: #fcf7f8;
 	 --main-color: #5afaf2;
@@ -25,7 +25,33 @@ html {
 body {
 	 background-color: var(--bg-color);
 	 color: var(--text-color);
+	 overflow-x: hidden; 
 }
+
+.reveal-left {
+    position: relative;
+    transform: translateX(-120px);
+    opacity: 0;
+    transition: 2s all ease;
+}
+
+.reveal-left.active {
+   transform: translateX(0);
+   opacity: 1;
+}
+
+.reveal-right {
+    position: relative;
+    transform: translateX(120px);
+    opacity: 0;
+    transition: 2s all ease;
+}
+
+.reveal-right.active {
+   transform: translateX(0);
+   opacity: 1;
+}
+
 
 /* header */
 header {
@@ -33,7 +59,7 @@ header {
 	 top: 0;
 	 left: 0;
 	 width: 100%;
-	 padding: 1rem 9%;
+	 padding: 2rem 9%;
 	 background-color: transparent;
 	 display: flex;
 	 justify-content: space-between;
@@ -120,20 +146,28 @@ section {
 	 display: flex;
 	 justify-content: center;
 	 align-items: center;
-	 background: linear-gradient(to bottom, rgba(0, 0, 0, .7), rgba(0, 0, 0, .7)), url('../images/hero-bg.jpg');
-/* 	 mask-image: linear-gradient(to bottom, #182031 50%, transparent 95%); */
-     background-repeat: no-repeat;
-     background-attachment: fixed;
-     background-size: cover;
+      background: fixed linear-gradient(transparent, #182031 70%),
+    fixed
+      repeating-linear-gradient(
+        #182031,
+        #182031 1px,
+        transparent 1px,
+        transparent 50px
+      ),
+    fixed
+      repeating-linear-gradient(
+        to right,
+        #111723,
+        #111723 1px,
+        transparent 1px,
+        transparent 40px
+      )
+      #070707;
 }
 
 .hero-content h3 {
-	 font-size: 3.2rem;
-	 font-weight: 500;
-}
-
-.hero-content h3:nth-of-type(2) {
-	 margin-bottom: 2rem;
+	 font-size: 2.2rem;
+	 font-weight: 300;
 }
 
 span {
@@ -141,19 +175,21 @@ span {
 	 font-weight: 500;
 }
 
-.hero-content h1 {
-	 font-size: 5.6rem;
-	 font-weight: 900;
-	 line-height: 1.3;
-	 background-image: linear-gradient(30deg, #5afaf2 40%, #e8e8e8 20%);
-	 --webkit-background-clip: text;
-			  background-clip: text;
-	color: transparent;		
-	filter: drop-shadow(3px 3px 3px rgba(137, 255, 253, .4));  
+.hero-content {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+    width: 100%;
 }
 
-.hero-img img {
-     width: 33vw;
+.hero-content h1 {
+	 font-size: 3.5rem;
+	 font-weight: 500; 
+}
+
+.hero-content img {
+     width: 25vw;
      animation: floatImage 4s ease-in-out infinite; 
 }
 
@@ -169,9 +205,11 @@ span {
 	 }
 }
 
-.hero-content p {
-	 font-size: 1.6rem;
+.hero-content .btn {
+    margin-top: 1rem;
 }
+
+
 
 .social-media a {
 	 display: inline-flex;
@@ -182,7 +220,7 @@ span {
 	 background: transparent;
 	 border: .2rem solid var(--main-color);
 	 border-radius: 50%;
-	 margin: 3rem 1.5rem 3rem 0;
+	 margin: .5rem .6rem 1rem 0;
 	 overflow: hidden;
 
 }
@@ -202,21 +240,12 @@ span {
 /* button */
 .btn {
 	 display: inline-block;
-	 
-/*	 background: var(--main-color);*/
-/*	 border-radius: 4rem;*/
-/*	 box-shadow: 0 0 1rem var(--main-color);*/
 	 font-size: 1.6rem;
 	 letter-spacing: .1rem;
 	 font-weight: 500;
-/*	 transition: .5s box-shadow ease;*/
 	 position: relative;
 	  background: rgba(100,150,170,0.2);
 }
-
-/*.btn:hover {
-	 box-shadow: none;
-}*/
 
 .btn span {
 	   display: block;
@@ -280,7 +309,7 @@ span {
   transition-delay: 0.2s;
 }
 
-.cursor{
+/*.cursor{
    display: inline-block;
    background: var(--main-color);
    width: 3px;
@@ -295,7 +324,7 @@ span {
           0% { background: var(--main-color); }
           50% { background-color: transparent; }
           100% { background-color: var(--main-color); }
-}
+}*/
 
 /* about */
 .about {
@@ -307,13 +336,22 @@ span {
 	 background: var(--second-bg-color);
 }
 
-.about-paragraph {
+.about-content {
 	  display: flex;
+	  flex-direction: column;
+	 align-items: center;
+	 justify-content: center;
+	 gap: 1rem;
+	 color: var(--text-color);
+}
+
+.about-me {
+      display: flex;
 	  width: 60%;
 	  gap: 1rem;
-	 
+
 }
-.about-paragraph p {
+.about-me p {
       text-align: justify-all;
 	   text-justify: inter-word;
 	   word-break: break-all;
@@ -323,6 +361,8 @@ span {
 .heading {
 	 font-size: 4.5rem;
 	 text-align: center;
+	 color: var(--text-color);
+
 }
 
 .about h2 {
@@ -405,7 +445,7 @@ span {
 
 /* blog section */
 .blog {
-	 background: var(--second-bg-color);
+	  background: var(--second-bg-color);
 	  display: flex;
 	  flex-direction: column;
 	  align-items: center;
@@ -429,7 +469,6 @@ span {
    box-shadow: 0 0 1rem var(--bg-color);
    overflow: hidden;
    display: flex;
-/*    width: 70%; */
 }
 
 .blog-card img {
@@ -447,7 +486,7 @@ span {
 	  left: 0;
 	  width: 100%;
 	  height: 100%;
-	  background: linear-gradient(rgba(0, 0, 0, .1), var(--main-color));
+	  background: linear-gradient(rgba(0, 0, 0, .1), var(--bg-color));
 	  display: flex;
 	  justify-content: center;
 	  align-items: center;
@@ -456,6 +495,7 @@ span {
 	  padding: 0 4rem;
 	  transform: translateY(100%);
 	  transition: .5s ease;
+	  color: var(--text-color);
 }
 
 .blog-card:hover .blog-layer {
@@ -489,6 +529,9 @@ span {
      gap: 10px;                      
 }
 
+.contact form label {
+  font-size: 1.8rem;
+}
 .contact form input,
 .contact form textarea {
 	 width: 100%;
@@ -498,6 +541,13 @@ span {
 	 background: var(--second-bg-color);
 	 border-radius: .8rem;
 	 margin: .7rem 0;
+}
+
+.form-control:focus {
+  border-color: #66afe9;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+   box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px var(--main-color);
 }
 
 .contact form textarea {
@@ -537,17 +587,28 @@ span {
 /* footer */
 footer {
 	 display: flex;
-	 justify-content: center;
+	 justify-content: space-around;
 	 align-items: center;
 	 flex-wrap: wrap;
-	 padding: 2rem 9%;
+	 padding: 1rem 9%;
 	 background: var(--second-bg-color);
+
 }
 
 .footer-text p {
 	 font-size: 1.6rem;
 	 font-weight: normal;
 }
+
+
+
+
+
+
+
+
+
+
 
 /* BREAKPOINTS */
 /* Dekstop / PC */
@@ -593,6 +654,18 @@ footer {
 	 flex-wrap: wrap;
 	
    }
+
+    .hero h3 {
+	 	 font-size: 1.9rem;
+	 }
+
+	 .hero h1 {
+	 	 font-size: 3.9rem;
+	 }
+
+	 .hero-content img {
+	 	 width: 36vw;
+	 }
 }
 /* Mobile */
 @media ( width <= 768px ) {
@@ -629,17 +702,18 @@ footer {
 	 }
 
 	 .hero h3 {
-	 	 font-size: 2.6rem;
+	 	 font-size: 1.8rem;
 	 }
 
 	 .hero h1 {
-	 	 font-size: 5rem;
+	 	 font-size: 3.8rem;
 	 }
 
-	 .hero-img img {
-	 	 width: 70vw;
-	 	 margin-top: 4rem;
+	 .hero-content img {
+	 	 width: 55vw;
+/*	 	 margin-top: 4rem;*/
 	 }
+
 
      .about-paragraph,
      .tech-stack {
@@ -680,6 +754,7 @@ footer {
   
 .btn {
 	  width: 30%;
+	  text-align: center;
 } 
 
 }
