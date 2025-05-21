@@ -8,6 +8,7 @@
 	 scroll-behavior: smooth;
 	 font-family: 'Roboto', arial, sans-serif;
 	 font-weight: 300;
+/*	 overflow-x: hidden;*/
 }
 
 :root {
@@ -25,7 +26,11 @@ html {
 body {
 	 background-color: var(--bg-color);
 	 color: var(--text-color);
-	 overflow-x: hidden; 
+	 overflow-x: hidden;
+}
+
+.hide {
+	 overflow-y: hidden;
 }
 
 .reveal-left {
@@ -73,10 +78,10 @@ header.sticky {
 }
 
 .logo {
-	 font-size: 2.5rem;
+	 font-size: 3rem;
 	 color: var(--text-color);
 	 text-transform: capitalize;
-     font-family: 'Alex Brush';
+     font-family: 'Rosca';
 }
 
 nav a {
@@ -88,7 +93,8 @@ nav a {
 	 font-weight: normal;
 }
 
-nav a:hover
+nav a:hover,
+.logo:hover
 {
 	 color: var(--main-color);
 }
@@ -113,26 +119,24 @@ nav a:hover
 }
 
 #menu .top {
-    stroke-dasharray: 40 130;
+    stroke-dasharray: 40 172;
 }
 
 #menu .middle {
-    stroke-dasharray: 40 140;
+    stroke-dasharray: 40 111;
 }
 #menu .bottom {
-    stroke-dasharray: 40 205;
+    stroke-dasharray: 40 172;
 }
 #menu.active .top {
-    stroke-dasharray: 75 130;
-    stroke-dashoffset: -63px;
+    stroke-dashoffset: -132px;
 }
 
 #menu.active .middle {
-    stroke-dashoffset: -102px;
+    stroke-dashoffset: -71px;
 }
 #menu.active .bottom {
-    stroke-dasharray: 110 205;
-    stroke-dashoffset: -86px;
+    stroke-dashoffset: -132px;
 }
 
 
@@ -349,8 +353,8 @@ span {
       display: flex;
 	  width: 60%;
 	  gap: 1rem;
-
-}
+      letter-spacing: 1.1px;
+       }
 .about-me p {
       text-align: justify-all;
 	   text-justify: inter-word;
@@ -435,6 +439,8 @@ span {
 .project-card p {
 	 font-size: 1.6rem;
 	 margin: 1rem 0 3rem;
+	 letter-spacing: 1.1px;
+	 color: var(--text-color);
 }
 
 .btn-card {
@@ -510,6 +516,7 @@ span {
 .blog-layer p {
 	 font-size: 1.6rem;
 	 margin: .3rem 0 1rem;
+	 letter-spacing: 1.1px;
 }
 
 /* contact section  */
@@ -526,11 +533,13 @@ span {
                           'name name email email'
                           'label-message label-message label-message label-message'
                           'message message message message';	
-     gap: 10px;                      
+     gap: 10px;  
+     letter-spacing: 1.1px;                    
 }
 
 .contact form label {
   font-size: 1.8rem;
+  letter-spacing: 1.1px; 
 }
 .contact form input,
 .contact form textarea {
@@ -598,6 +607,7 @@ footer {
 .footer-text p {
 	 font-size: 1.6rem;
 	 font-weight: normal;
+	 letter-spacing: 1.1px;
 }
 
 
@@ -678,6 +688,7 @@ footer {
 	 	 top: 100%;
 	 	 left: 0;
 	 	 width: 100%;
+	 	 height: 100dvh;
 	 	 padding: 1rem 3%;
 	 	 background: var(--bg-color);
 	 	 border-top: .1rem solid rgba(0, 0, 0, .2);
@@ -686,7 +697,11 @@ footer {
 	 	 display: none;
 	 }
      nav.active {
-         display: block;
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         justify-content: center;
+
      }
 
      header.active {
@@ -711,7 +726,6 @@ footer {
 
 	 .hero-content img {
 	 	 width: 55vw;
-/*	 	 margin-top: 4rem;*/
 	 }
 
 
@@ -720,7 +734,7 @@ footer {
      	 flex-direction: column;
      }
      .tech-stack {
-     	  width: 60%;
+     	  width: 70%;
      }
     
      .projects h2 {
@@ -734,7 +748,12 @@ footer {
      .blog-content {
      	  grid-template-columns: repeat(2, 1fr);
      }
+      
 
+
+.tech-stack .icon {
+	 width: 50%;
+}
   .btn-card {
      justify-content: center;
       gap: 1rem;
@@ -756,6 +775,10 @@ footer {
 	  width: 30%;
 	  text-align: center;
 } 
+
+.about-me {
+	  width: 70%;
+}
 
 }
 

@@ -6,6 +6,7 @@ let sections = document.querySelectorAll('section');
 let navLinks = document.querySelectorAll('header a');
 let revealRight = document.querySelectorAll('.reveal-right');
 let revealLeft = document.querySelectorAll('.reveal-left');
+const elementhtml = document.querySelector('html');
 
 
 // hamburger menu
@@ -13,6 +14,10 @@ hamMenu.addEventListener('click', function() {
       hamMenu.classList.toggle('active');
       nav.classList.toggle('active');
       header.classList.toggle('active');
+      document.body.classList.toggle('hide');
+      elementhtml.classList.toggle('hide');
+     
+     
 }); 
 
 // scroll sections active links 
@@ -41,6 +46,7 @@ window.addEventListener('scroll', function() {
       hamMenu.classList.remove('active');
       nav.classList.remove('active');
       header.classList.remove('active');
+      elementhtml.classList.remove('hide');
        
 
      const windowHeight = window.innerHeight; 
@@ -50,7 +56,8 @@ window.addEventListener('scroll', function() {
             const revealTopLeft = revealLeft[rl].getBoundingClientRect().top;
              (revealTopLeft < windowHeight - elementVisible) ? revealLeft[rl].classList.add('active') : revealLeft[rl].classList.remove('active');
        } 
-
+     
+    // reveal aniamtion section
     for( let rr = 0; rr < revealRight.length; rr++ ) {
             const revealTopRight = revealRight[rr].getBoundingClientRect().top;
              (revealTopRight < windowHeight - elementVisible) ? revealRight[rr].classList.add('active') : revealRight[rr].classList.remove('active');
@@ -59,65 +66,6 @@ window.addEventListener('scroll', function() {
 
 }); 
   
-
-// function reveal() { 
-        
-//          for(let i = 0; i < revealLeft.length; i++) {
-                
-//                  let revealTop = revealLeft[i].getBoundingClientRect().top;
-
-//                  if( revealTop < windowHeight - elementVisible ) {
-//                      revealLeft[i].classList.add('active');
-//                  }else {
-//                      revealLeft[i].classList.remove('active');
-//                  }
-//              }
-
-// } 
-
-
-  
-// typed js 
-// const typed = document.querySelector('.multiple-text');
-// const toType = ['Frontend', 'Web Design', 'Blogger'];
-
-// const delayTypingChar = 100;
-// const delayErasingText = 100;
-// const delayTypingText = 1000;
-
-// let totypeIndex = 0;
-// let charIndex = 0;
-
-// function typeText() {
-//    if (charIndex < toType[totypeIndex].length) {
-//       typed.textContent += toType[totypeIndex].charAt(charIndex);
-//       charIndex++;
-//       setTimeout(typeText, delayTypingChar);
-//    }
-//    else {
-//       setTimeout(eraseText, delayTypingText);
-//    }
-// }
-
-// function eraseText() {
-//    if (charIndex > 0) {
-//       typed.textContent = toType[totypeIndex].substring(0, charIndex-1);
-//       charIndex = charIndex-1;
-//       setTimeout(eraseText, delayErasingText);
-//    }
-//    else {
-//       totypeIndex++;
-
-//       if (totypeIndex >= toType.length)
-//          totypeIndex = 0;
-//          setTimeout(typeText, delayTypingText);
-//    }
-// }
-
-// window.onload = function() {
-//    if (toType[totypeIndex].length) setTimeout(typeText, delayTypingText);
-// }   
-
 // smooth scroll 
 navLinks.forEach(function (i) {
        i.addEventListener("click", (event) => {
