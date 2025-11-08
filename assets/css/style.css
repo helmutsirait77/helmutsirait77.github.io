@@ -1,0 +1,224 @@
+:root {
+	  --background: #f8f4f9;
+	  --color-text: #393e46;
+}
+body {
+	  font: 1rem/1.5 'Poppins', arial, sans-serif; 
+	  background-color: var(--background);
+	  color: var(--color-text);
+}
+header {
+	 height: auto;
+}
+/* dark mode button  */
+.toggle {
+		 border: .125em solid currentColor;
+	    border-radius: 2em;
+	    cursor: pointer;
+	    display: block;
+	    height: 2em;
+	    position: relative;
+	    width: 3.75em;
+}
+.toggle span {
+	  background-color: currentColor;
+	  border-radius: 2em;
+	  display: block;
+	  height: 1.5em;
+	  right: .25em;
+	  overflow: hidden;
+	  position: absolute;
+	  top: .25em;
+	  text-indent: -9999px;
+	  transition: right .25s;
+	  width: 1.5em;
+	  z-index: 2;
+}
+.toggle::before,
+.toggle::after {
+	  content: '';
+	  display: block;
+	  border-radius: 1em;
+	  position: absolute;
+	  z-index: 1;
+}
+.toggle::after {
+	  box-shadow: .25em .25em #5901d8;
+	  height: 1.125em;
+	  right: .9em;
+	  top: .125em;
+	  width: 1.125em;
+}
+.toggle::before {
+	  background-color: #ffc409;
+	  height: .625em;
+	  outline: .25em dotted #ffc409;
+	  outline-offset: .125em;
+	  left: .7em;
+	  top: .7em;
+	  width: .625em;
+}
+.toggle span.active-span {
+	  right: 2em;
+}
+/* navigation */
+nav {
+    display: grid;
+    grid-template-columns: 2.5fr repeat(5, 1fr);
+    align-items: center;
+    padding: 1em 2em;
+    text-transform: capitalize;
+/*    background-color: var(--color-text);*/
+/*     color: var(--background);*/
+     position: fixed;
+     top: 0;
+     left: 0;
+     right: 0;
+}
+nav a {
+/*    color: var(--background);*/
+}
+
+nav a:nth-child(1) {
+	 text-transform: uppercase;
+	 font-family: Pacifico;
+}
+nav :where(a:nth-child(2), a:nth-child(3), a:nth-child(4)){
+	   font-weight: 500;
+}
+nav :where(a:nth-child(2), a:nth-child(3), a:nth-child(4), div:nth-child(5)) {
+	   justify-self: end;
+}
+nav.scrolled {
+    background-color: var(--color-text);
+    color: var(--background);
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, .5);
+}
+nav a.scrolled {
+    color: var(--background);
+}
+.burger{
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    position: relative;
+    justify-self: end;
+}
+.burger__line{
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: var(--color-text);
+    position: absolute;
+    left: 0;
+    transition: .3s all linear;
+}
+.burger__line_first{
+    top: 0;
+}
+.burger__line_second, .burger__line_third{
+    top: 50%;
+    transform: translateY(-50%);
+}
+.burger__line_fourth{
+    bottom: 0;
+}
+.burger_active .burger__line_first, .burger_active .burger__line_fourth{
+    opacity: 0;
+}
+.burger_active .burger__line_second{
+    transform: translateY(-50%) rotate(45deg);
+}
+.burger_active .burger__line_third{
+    transform: translateY(-50%) rotate(-45deg);
+}
+/* hero */
+.hero {
+	  min-height: 100vh;
+      display: grid;
+      place-items: center;
+}
+.hero figcaption {
+	  font-size: 4vw;
+	  text-align: center;
+}
+.hero figcaption span {
+	 font-weight: 600;
+}
+/* about */
+.about {
+	 min-height: 100vh;
+	 display: grid;
+	 grid-template-columns: repeat(2, 1fr);
+	 grid-template-areas: 'content1 heading'
+	                       'content1 content2';
+	 padding: 0 2em;  
+     place-content: center;  
+     gap: 1rem;              
+}
+.about h2 {
+	  grid-area: heading;
+	  align-self: end;
+	  text-transform: capitalize;
+	  font-size: 2vw;
+	  font-weight: 600;
+}
+.about p {
+	 grid-area: content2;
+	 width: 40ch;
+}
+.about img {
+	 width: 70%;
+	 grid-area: content1;
+	 justify-self: end;
+}
+/* projects */
+.projects {
+	 min-height: 100vh;
+	 display: grid;
+	 place-content: center;
+	 grid-template-columns: repeat(3, 1fr);
+	 grid-template-areas: 'heading heading heading'
+	                      'content1 content2 content3';
+	 gap: 1rem;
+	 padding: 0 2em;
+}
+.projects h2 {
+	  text-transform: capitalize;
+	  font-size: 2vw;
+	  font-weight: 600;
+	  grid-area: heading;
+	  justify-self: center;
+}
+article {
+   width: 90%;
+   justify-self: center;
+}
+article img {
+	  width: 100%;
+}
+article p span {
+	 margin-right: 10px;
+	 font-weight: 600;
+}
+article a {
+	display: inline-block;
+	margin-block: 10px;  
+}
+article a:hover {
+	 opacity: .7;
+}
+.btn {
+	 background-color: var(--color-text);
+	 color:var(--background);
+	 padding: 1em 3em;
+	 font-weight: 500;
+}
+.btn-sm {
+	 font-size: .5em;
+}
+.btn-lg {
+	 font-size: 2em;
+}
+
+
