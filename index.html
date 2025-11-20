@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html >
 <html lang="en">
 <head>
 	<!-- Basic -->
@@ -25,15 +25,12 @@
 	   <header>
 	   	 <!-- navigation -->
 	   	  <nav>
-	   	  	    <a href="#">hs</a>
-	   	  	    <div class="nav-link">
-	   	  	    	    <a href="#about">about</a>
+	   	  	    <a href="#home">hs</a>
+	   	  	    <div class="nav-link" role="navigation">
+	   	  	    	   <a href="#about">about</a>
 	   	  	         <a href="#projects">projects</a>
-	   	  	         <a href="#content">contact</a>
+	   	  	         <a href="#contact">contact</a>
 	   	  	    </div>
-	   	  	    <div class="toggle" role="button" tabindex="1">
-                    <span></span>
-                </div>
                 <div class="burger">
                    <span class="burger-line burger-line-first"></span>
                   <span class="burger-line burger-line-second"></span>
@@ -42,7 +39,7 @@
               </div> 
 	   	  </nav>
 	   	  <!-- hero -->
-	   	  <figure class="hero">
+	   	  <figure class="hero" id="home">
 	   	  	   <figcaption>
 	   	  	   	   Hi👋, I'm <span>Helmut Sirait</span> a <span>Front-End Web Developer</span> living in <span>Medan, Indonesia </span>
 	   	  	   </figcaption> 
@@ -52,18 +49,23 @@
 	  <main>
 	  	   <section class="about" id="about">
 	  	   	   <h2>about me</h2>
-	  	   	   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit laboriosam quam animi dicta eum atque, mollitia ipsam velit facilis. Libero perspiciatis tenetur culpa iusto itaque recusandae consectetur dolor eaque. Consequuntur dolorem in facilis vero asperiores non, delectus minima beatae numquam fugiat excepturi quasi suscipit sunt et magni eius iste soluta.</p>
-	  	   	   <img src="./assets/images/helmut.png" alt="Helmut Sirait">
+	  	   	   <div class="content-about" role="section">
+	  	   	   	   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit laboriosam quam animi dicta eum atque, mollitia ipsam velit facilis. Libero perspiciatis tenetur culpa iusto itaque recusandae consectetur dolor eaque. Consequuntur dolorem in facilis vero asperiores non, delectus minima beatae numquam fugiat excepturi quasi suscipit sunt et magni eius iste soluta.</p>
+	  	   	   	 <div class="about-image">
+	  	   	   	 	   <img src="./assets/images/helmut.png" alt="helmut sirait">
+	  	   	   	 </div>     
+	  	   	   </div>
 	  	   </section>
-	  	   <!-- <section class="projects" id="projects">
+	  	   <section class="projects" id="projects">
 	  	   	     <h2>projects</h2>
-	  	   	     <article>
+	  	   	     <div class="content-projects">
+	  	   	     	  <article>
 	  	   	     	   <h3>Website</h3>
 	  	   	     	   <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestias minima amet sed, reprehenderit vero itaque.</p>
 	  	   	     	    <p><span>HTML</span><span>CSS</span><span>JavaScript</span></p>
 	  	   	     	   <img src="./assets/images/project1.png" alt="my project">
-	  	   	     	   <a href="" class="btn btn-sm hover-filled-slide-down"><span>code</span></a>
-	  	   	     	   <a href="" class="btn btn-sm hover-filled-slide-down"><span>live code</span></a>
+	  	   	     	   <a href="" class="btn btn-sm">code</a>
+	  	   	     	   <a href="" class="btn btn-sm"><span>live code</span></a>
 	  	   	     </article>
 	  	   	     <article>
 	  	   	     	   <h3>Website</h3>
@@ -81,9 +83,49 @@
 	  	   	     	   <a href="" class="btn btn-sm hover-filled-slide-down"><span>code</span></a>
 	  	   	     	   <a href="" class="btn btn-sm hover-filled-slide-down"><span>live code</span></a>
 	  	   	     </article>
-	  	   </section> -->
+	  	   	      <article>
+	  	   	     	   <h3>Website</h3>
+	  	   	     	   <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestias minima amet sed, reprehenderit vero itaque.</p>
+	  	   	     	     <p><span>HTML</span><span>CSS</span><span>JavaScript</span></p>
+	  	   	     	   <img src="./assets/images/project1.png" alt="my project">
+	  	   	     	   <a href="" class="btn btn-sm hover-filled-slide-down"><span>code</span></a>
+	  	   	     	   <a href="" class="btn btn-sm hover-filled-slide-down"><span>live code</span></a>
+	  	   	     </article>
+	  	   	     <article>
+	  	   	     	   <h3>Website</h3>
+	  	   	     	   <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestias minima amet sed, reprehenderit vero itaque.</p>
+	  	   	     	     <p><span>HTML</span><span>CSS</span><span>JavaScript</span></p>
+	  	   	     	   <img src="./assets/images/project1.png" alt="my project">
+	  	   	     	   <a href="" class="btn btn-sm hover-filled-slide-down"><span>code</span></a>
+	  	   	     	   <a href="" class="btn btn-sm hover-filled-slide-down"><span>live code</span></a>
+	  	   	     </article>
+	  	   	     <article>
+	  	   	     	   <h3>Website</h3>
+	  	   	     	   <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestias minima amet sed, reprehenderit vero itaque.</p>
+	  	   	     	     <p><span>HTML</span><span>CSS</span><span>JavaScript</span></p>
+	  	   	     	   <img src="./assets/images/project1.png" alt="my project">
+	  	   	     	   <a href="" class="btn btn-sm hover-filled-slide-down"><span>code</span></a>
+	  	   	     	   <a href="" class="btn btn-sm hover-filled-slide-down"><span>live code</span></a>
+	  	   	     </article>
+	  	   	     </div>
+	  	   </section>
+		   <section class="contact" id="contact">
+					    <h2>contact me</h2>
+					    <form name="contatme" autocomplete="off">
+					    	  <label for="name" class="lname">Name</label>
+					    	  <input type="text" name="name" id="name" placeholder="Your Name" required pattern="[a-zA-Z0-9]+" minlength="4" maxlength="10">
+					    	  <label for="email" class="lemail">Email</label>
+					    	  <input type="email" name="email" id="email" placeholder="Enter Email" required pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$">
+					    	  <label for="message" class="lmessage">Message</label>	
+					    	  <textarea name="message" id="message" placeholder="Write Something" required cols="30" rows="10"></textarea>
+					    	  <button type="submit" class="btn btn-sm">Send Message</button>
+					    </form>
+		   </section>
 	  </main>
 	  <!-- footer -->
+	  <footer>
+	  	    <p>&copy; 2025, Built with ❤️ by Helmut Sirait</p>
+	  </footer>
  <script src="./assets/js/script.js"></script> 
 </body>
 </html>
