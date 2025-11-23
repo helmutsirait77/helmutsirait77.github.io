@@ -35,7 +35,7 @@ header nav a:hover,
 header nav a.active {
     color: #0ef;
 }
-nav > a {
+nav .logo {
 	 text-transform: uppercase;
 	 font-family: Pacifico;
 	 z-index: 1;
