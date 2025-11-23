@@ -41,6 +41,10 @@
       display: block;
       justify-self: end;
   }
+ .hero figcaption {
+    font-size: 6vw;
+    text-align: center;
+}
 /* about */
 .about {
    height: auto;
@@ -48,7 +52,7 @@
 }
     .about h2 {
     	 justify-self: center;
-    	 font-size: 4vw;
+    	 font-size: 6vw;
         margin-top: 5rem;
     }
     .content-about {
@@ -72,9 +76,8 @@
           grid-template-rows: unset;
           place-items: center;
       }
-      .projects h2,
-      .contact h2 {
-          font-size: 4vw;
+      .projects h2 {
+          font-size: 6vw;
           margin-top: 5rem;
       }
       article {
@@ -95,7 +98,7 @@
                             'message' ;
    }
    .contact h2 {
-          font-size: 4vw;
+          font-size: 6vw;
           margin-top: 4rem;
       }
 }  
