@@ -1,4 +1,4 @@
-// variable 
+ // Ambil Semua Elemen DOM yang Dibutuhkan (DEKLARASI) 
 const nav = document.querySelector('nav');
 const linka = document.querySelectorAll('header nav a');
 const burger = document.querySelector('.burger');
@@ -6,48 +6,6 @@ const burgerLine = document.querySelectorAll('.burger .burger-line');
 const containerMenu = document.querySelector('.nav-link');
  let sections = document.querySelectorAll('section');
 
-// changed background nav scrolled
-document.addEventListener("DOMContentLoaded", () => {
-    // 1.Take navigation elements
-    const navElement = document.querySelector('header nav');
-    // Make sure the element is found
-    if (!navElement) {
-        console.warn("Elemen <nav> tidak ditemukan. Pastikan Anda memiliki tag <nav> di dalam <header>.");
-        return;
-    }
-    // The name of the CSS class to be applied after scrolling.
-    const scrolledClass = 'scrolled'; 
-    // Scroll threshold value in pixels
-    // After passing this distance, the navigation background will change.
-    const scrollThreshold = 50; 
-    // --- Function to handle background changes when scrolling ---
-    function handleNavBackground() {
-        // Check the vertical position of the scrolll
-        if (window.scrollY > scrollThreshold) {
-            // If it passes the threshold, add the class 'scrolled'
-            // This will trigger a new color (background changes)
-            navElement.classList.add('scrolled');
-             containerMenu.classList.add('scrolled');
-        for(let top = 0; top < linka.length; top++) {
-             linka[top].classList.add('scrolled') 
-        }  
-        for(let top = 0; top < burgerLine.length; top++) {
-                burgerLine[top].classList.add('scrolled') 
-        }
-        } else {
-            navElement.classList.remove('scrolled');
-            containerMenu.classList.remove('scrolled');
-        for(let bottom = 0; bottom < linka.length; bottom++) {
-             linka[bottom].classList.remove('scrolled') 
-        }
-        for(let bottom = 0; bottom < burgerLine.length; bottom++) {
-                burgerLine[bottom].classList.remove('scrolled') 
-        }
-        }
-    }
-    window.addEventListener('scroll', handleNavBackground);
-    handleNavBackground();
-});
 // burger button
 burger.addEventListener('click', function () {
       burger.classList.toggle('burger-active');
@@ -88,69 +46,117 @@ for( let i = 0; i < linka.length; i++ ){
                }
          });
     }
-
+// scrolled and menu active link
 document.addEventListener("DOMContentLoaded", () => {
-    // Fetch all relevant link elements in the navigation
-    // take the main link inside the .nav-link, plus the 'hs' logo link
-    const navLinksContainer = document.querySelector('.nav-link');
-    const primaryNavLinks = navLinksContainer ? navLinksContainer.querySelectorAll('a') : [];
-    const homeLink = document.querySelector('header nav > a[href="#home"]'); //
-    // Combine all the links that need to be tracked
-    const allNavLinks = [...(homeLink ? [homeLink] : []), ...primaryNavLinks];
-    // Get all section elements that have an ID
-    // Also add 'figure.hero#home' as this is the first part
-    const sections = document.querySelectorAll('#home, #about, #projects, #contact');
-    // Make sure the element is found before continuing.
-    if (allNavLinks.length === 0 || sections.length === 0) {
-        console.warn("Tidak dapat menemukan tautan navigasi atau bagian konten yang diperlukan.");
+    // Variabel Konfigurasi
+    const headerOffset = 80; // Offset untuk Scroll Spy
+    const scrollThreshold = 50; // Ambang batas gulir untuk mengubah background
+
+    // Cek keberadaan elemen utama
+    if (!nav) {
+        console.error("Elemen <nav> tidak ditemukan.");
         return;
     }
-    // --- Help Function for Managing Active Classes ---
+// 2. FUNGSI BANTUAN    
     function removeActiveClass() {
-        allNavLinks.forEach(link => {
-            // Assuming your active class is 'active'
-            link.classList.remove('active'); 
+        linka.forEach(link => {
+            link.classList.remove('active');
         });
     }
-    allNavLinks.forEach(link => {
-        link.addEventListener('click', (event) => {
-            // Remove the 'active' class from all links
+    function handleNavBackground() {
+        if (window.scrollY > scrollThreshold) {
+            nav.classList.add('scrolled');
+            containerMenu.classList.add('scrolled');
+            linka.forEach(link => link.classList.add('scrolled'));
+            burgerLine.forEach(line => line.classList.add('scrolled'));
+        } else {
+            nav.classList.remove('scrolled');
+            containerMenu.classList.remove('scrolled');
+            linka.forEach(link => link.classList.remove('scrolled'));
+            burgerLine.forEach(line => line.classList.remove('scrolled'));
+        }
+    }
+// 3. SCROLL SPY & NAVIGASI AKTIF 
+// Dapatkan Path saat ini. Ganti 'index.html' dengan '' jika di root
+    const currentPath = window.location.pathname.split('/').pop() || ''; 
+    let isMultiPageNav = false;
+
+// 1. Prioritaskan Pengecekan Multi-Halaman (Termasuk Home)
+linka.forEach(link => {
+        const linkHref = link.getAttribute('href');
+        // Lewati tautan internal (anchor) untuk logika multi-halaman
+        if (linkHref.startsWith('#')) return; 
+        // Dapatkan nama file atau string kosong jika linkHref adalah '/'
+        const linkPath = linkHref.split('/').pop() || '';
+        // **PERBAIKAN HOME:**
+        // Cek jika link ini adalah tautan Home (index.html atau kosong)
+        const isHomeLink = linkPath === '' || linkPath.toLowerCase() === 'index.html';
+        // Cek jika halaman saat ini adalah Home (root atau index.html)
+        const isCurrentHome = currentPath === '' || currentPath.toLowerCase() === 'index.html';
+        // Jika tautan adalah Home DAN halaman saat ini adalah Home, ATAU
+        // Jika tautan dan halaman cocok (untuk non-Home)
+        if ((isHomeLink && isCurrentHome) || (linkPath === currentPath)) {
             removeActiveClass();
-            // Add the class 'active' to the newly clicked link
-            event.currentTarget.classList.add('active');
-        });
+            link.classList.add('active');
+            isMultiPageNav = true;
+        }
     });
 
-    // --- scrolling page ---
-    window.addEventListener('scroll', () => {
-        let currentSectionId = ''; 
-        // The offset distance from the top of the window, is adjusted to the height of your header.
-        // If your header is fixed/sticky, use your header height + a little margin.
-        // Assuming your header is around 80px tall.
-        const headerOffset = 80; 
+    // --- Fungsi yang menjalankan logika Scroll Spy ---
+    function checkScrollActive() {
+        let currentSectionId = '';
+        
+        // Tentukan bagian mana yang sedang dilihat
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            // Check if the scroll position is within this section
             if (window.scrollY >= sectionTop - headerOffset) {
                 currentSectionId = section.getAttribute('id');
             }
         });
-        // Apply the 'active' class to the appropriate links.
-        removeActiveClass(); // Hapus dari semua
-        allNavLinks.forEach(link => {
-            const linkHref = link.getAttribute('href').substring(1); // Get ID (#home -> home)
-            if (linkHref === currentSectionId) {
-                link.classList.add('active');
-            }
-        });
-    });
-    // Optional: Set the first link to be active on load (if it is at the top)
-    // Check if the page is at the top when loaded
-    if (window.scrollY < 5) { 
-        const homeLinkRef = allNavLinks.find(link => link.getAttribute('href') === '#home');
-        if (homeLinkRef) {
-            homeLinkRef.classList.add('active');
+
+        // Terapkan kelas 'active' jika ID bagian ditemukan
+        if (currentSectionId) {
+            removeActiveClass();
+            linka.forEach(link => {
+                const linkTarget = link.getAttribute('href').substring(1); 
+                
+                // Ini akan mengaktifkan #home saat gulir
+                if (linkTarget === currentSectionId) {
+                    link.classList.add('active');
+                }
+            });
         }
+        
+        // **PERBAIKAN HOME SCROLL**
+        // Jika di bagian paling atas (atau di atas ambang batas scroll)
+        if (window.scrollY < scrollThreshold) {
+             removeActiveClass();
+             // Cari tautan yang href-nya #home (atau '/')
+             const homeLinkRef = Array.from(linka).find(link => 
+                 link.getAttribute('href').toLowerCase() === '#home' || 
+                 link.getAttribute('href') === '/' || 
+                 link.getAttribute('href').toLowerCase() === 'index.html'
+             );
+             
+             if (homeLinkRef) {
+                 homeLinkRef.classList.add('active');
+             }
+         }
+    }
+    // 4. Inisialisasi Event Listener
+    window.addEventListener('scroll', () => {
+        handleNavBackground(); // Latar belakang navigasi
+
+        // Scroll Spy hanya berjalan jika ini bukan navigasi multi-halaman yang sudah diatur
+        // (Scroll spy akan mengambil alih jika pengguna berada di index.html dan menggulir)
+        if (!isMultiPageNav) { 
+            checkScrollActive(); 
+        }
+    });
+    // Panggil fungsi sekali saat load untuk mengatur status awal
+    handleNavBackground(); // Atur background awal
+    // Atur status aktif awal jika ini halaman SPA/Home
+    if (!isMultiPageNav) {
+        checkScrollActive(); 
     }
 });

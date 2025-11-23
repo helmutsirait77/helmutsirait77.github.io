@@ -17,7 +17,7 @@
       	position: absolute;
       	grid-template-columns: 1fr;
      	  height: 100dvh;
-     	  background-color: var(--background);
+     	  background-color: var(--color-text);
      	  top: 0;
      	  left: 0;
      	  align-content: space-evenly;
@@ -72,13 +72,32 @@
           grid-template-rows: unset;
           place-items: center;
       }
-      .projects h2 {
+      .projects h2,
+      .contact h2 {
           font-size: 4vw;
           margin-top: 5rem;
       }
       article {
           width: 100%;
       } 
+   /* contact */
+   .contact {
+      height: 100dvh;
+   }
+   form {
+       width: 100%;
+       grid-template-columns: 1fr;
+      grid-template-areas: 'lname'
+                            'iname'
+                            'lemail'
+                             'iemail'
+                            'lmessage'
+                            'message' ;
+   }
+   .contact h2 {
+          font-size: 4vw;
+          margin-top: 4rem;
+      }
 }  
 
 
